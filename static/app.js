@@ -6,7 +6,6 @@ const wordsList = document.getElementById('words-list');
 const count = document.getElementById('count');
 const errorDiv = document.getElementById('error');
 
-// Fonction de recherche
 async function searchWords() {
     const letters = input.value.trim();
     
@@ -20,11 +19,10 @@ async function searchWords() {
         return;
     }
     
-    // Affiche le loader
     loader.classList.remove('hidden');
     
     try {
-        const response = await fetch('/api/find-words', {
+        const response = await fetch('/words/api/find-words', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +39,6 @@ async function searchWords() {
             return;
         }
         
-        // Affiche les résultats
         displayResults(data.words, data.count);
         
     } catch (error) {
