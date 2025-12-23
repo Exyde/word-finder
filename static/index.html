@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔤 Word Finder</h1>
+        <p>Entre des lettres et découvre tous les mots possibles !</p>
+        
+        <div class="input-group">
+            <input type="text" id="letters" placeholder="Ex: chat" maxlength="10">
+            <button id="search-btn">Chercher</button>
+        </div>
+        
+        <div id="loader" class="loader hidden">Recherche en cours...</div>
+        
+        <div id="results" class="results hidden">
+            <h2>Résultats : <span id="count">0</span> mots trouvés</h2>
+            <div id="words-list"></div>
+        </div>
+        
+        <div id="error" class="error hidden"></div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
