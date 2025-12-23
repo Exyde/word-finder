@@ -16,6 +16,7 @@ app = Flask(__name__)
 DICTIONNAIRE = set()
 
 
+
 def load_dictionary():
     global DICTIONNAIRE
     with open('data/mots.txt', 'r', encoding='utf-8', errors='ignore') as f:
@@ -26,6 +27,9 @@ def load_dictionary():
                 DICTIONNAIRE.add(word_no_accent)
     
     print(f"Dictionnaire chargé : {len(DICTIONNAIRE)} mots")
+
+load_dictionary()
+
 
 def find_words(letters):
     letters = remove_accents(letters.lower())  # <-- ICI
@@ -68,17 +72,4 @@ def static_files(path):
 
 if __name__ == '__main__':
     load_dictionary()
-
-    # TEST DEBUG
-    test_words = ['régie', 'regie', 'génie', 'genie', 'tigre', 'régit']
-    for tw in test_words:
-        if tw in DICTIONNAIRE:
-            print(f"✓ '{tw}' est dans le dict - bytes: {tw.encode('utf-8')}")
-        else:
-            print(f"✗ '{tw}' N'EST PAS dans le dict")
-
-    # Cherche tous les mots de 5 lettres avec 'ieg'
-    matches = [w for w in DICTIONNAIRE if len(w) == 5 and 'i' in w and 'e' in w and 'g' in w]
-    print(f"\nMots de 5 lettres avec i,e,g (premiers 20): {matches[:20]}")
-
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    #app.run(debug=True, host='0.0.0.0', port=5000)
